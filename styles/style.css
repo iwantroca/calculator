@@ -21,7 +21,7 @@ header {
 
 .container {
   width: 300px;
-  height: 500px;
+  height: 520px;
   background-color: #212121;
   color: #60a07f;
   font-size: 33px;
@@ -40,6 +40,7 @@ header {
   transform: translateX(-50%);
   position: absolute;
   top: 22px;
+  /* margin-bottom: 20px; */
 }
 /* font size of input should be  22px*/
 #input {
@@ -51,6 +52,32 @@ header {
   bottom: 0px;
   right: 0px;
   margin-right: 5px;
+  font-size: 28px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+.buttons-holder {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  position: absolute;
+  top: 28%;
+  left: 7%;
+  right: 21px;
+  grid-gap: 20px;
+}
+button {
+  font-family: "Montserrat";
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  border: none;
+  font-size: 22px;
+}
+#equal-btn {
+  border-radius: 15px;
+  width: auto;
+  background-color: coral;
+  grid-column: 3/5;
 }
 footer {
   position: fixed;
