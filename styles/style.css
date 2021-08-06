@@ -31,7 +31,7 @@ header {
   filter: drop-shadow(0 0 19px rgba(144, 72, 72, 0.63));
 }
 .display {
-  width: 280px;
+  width: 270px;
   height: 100px;
   background: #4d4646;
   border-radius: 10px;
@@ -40,9 +40,7 @@ header {
   transform: translateX(-50%);
   position: absolute;
   top: 22px;
-  /* margin-bottom: 20px; */
 }
-/* font size of input should be  22px*/
 #input {
   font-size: 22px;
   word-wrap: break-word;
@@ -51,7 +49,7 @@ header {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  margin-right: 5px;
+  margin-right: 10px;
   font-size: 28px;
   font-weight: bold;
   color: whitesmoke;
@@ -71,13 +69,22 @@ button {
   height: 55px;
   border-radius: 100%;
   border: none;
-  font-size: 22px;
+  font-size: 19px;
+  background-color: #616161;
+  color: #dfdfdf;
+  font-weight: bold;
+  box-shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+button:hover {
+  cursor: pointer;
 }
 #equal-btn {
   border-radius: 15px;
   width: auto;
   background-color: coral;
   grid-column: 3/5;
+  font-weight: bold;
+  color: purple;
 }
 footer {
   position: fixed;
