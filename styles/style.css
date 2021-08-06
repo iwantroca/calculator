@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #c9f02a;
+  background-color: #f3dddd;
   font-family: "Amatic SC", sans-serif;
 }
 header {
@@ -28,6 +28,7 @@ header {
   font-family: "Montserrat", Roboto;
   border-radius: 12px;
   position: relative;
+  filter: drop-shadow(0 0 19px rgba(144, 72, 72, 0.63));
 }
 .display {
   width: 280px;
@@ -40,7 +41,17 @@ header {
   position: absolute;
   top: 22px;
 }
-
+/* font size of input should be  22px*/
+#input {
+  font-size: 22px;
+  word-wrap: break-word;
+}
+#result {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  margin-right: 5px;
+}
 footer {
   position: fixed;
   bottom: 0px;
