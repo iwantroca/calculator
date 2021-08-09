@@ -4,9 +4,8 @@ const operatorsNode = document.querySelectorAll(".operator");
 const equalButton = document.querySelector("#equal-btn");
 const resultDisplay = document.querySelector("#result");
 let allNumbers = [];
-let operatorsValue = [...operatorsNode].map((x) => x.textContent);
+let operatorsValue = [...operatorsNode].map((x) => x.value);
 let operatorPosition;
-// let input1;
 let num1;
 let num2;
 let currentOperator;
@@ -24,5 +23,29 @@ function findOperatorPosition(arr) {
   }
   num1 = result || parseInt(allNumbers.slice(0, operatorPosition).join(""));
 }
+function doCalculation(operator, input1, input2) {
+  switch (operator) {
+    case "+":
+      result = input1 + input2;
+      break;
+    case "-":
+      result = input1 - input2;
+      break;
+    case "*":
+      result = input1 * input2;
+      break;
+    case "/":
+      result = input1 / input2;
+      break;
+    case "%":
+      result = input1 / 100;
+      break;
+    default:
+      console.log("error");
+  }
+}
 
 buttons.forEach((button) => button.addEventListener("click", getInput));
+equalButton.addEventListener("click", () => {
+  doCalculation(currentOperator, num1, num2);
+});
