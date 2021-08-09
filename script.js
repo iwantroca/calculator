@@ -48,4 +48,5 @@ function doCalculation(operator, input1, input2) {
 buttons.forEach((button) => button.addEventListener("click", getInput));
 equalButton.addEventListener("click", () => {
   doCalculation(currentOperator, num1, num2);
+  allNumbers = [];
 });
