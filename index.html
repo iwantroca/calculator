@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <script defer src="script.js"></script>
     <title>Calculator</title>
   </head>
   <body>
@@ -20,24 +21,24 @@
           <p id="result">&nbsp</p>
         </div>
         <div class="buttons-holder">
-          <button class="buttons">AC</button>
-          <button class="buttons">C</button>
-          <button class="buttons">%</button>
-          <button class="buttons">&divide</button>
-          <button class="buttons">7</button>
-          <button class="buttons">8</button>
-          <button class="buttons">9</button>
-          <button class="buttons">+</button>
-          <button class="buttons">4</button>
-          <button class="buttons">5</button>
-          <button class="buttons">6</button>
-          <button class="buttons">-</button>
-          <button class="buttons">1</button>
-          <button class="buttons">2</button>
-          <button class="buttons">3</button>
-          <button class="buttons">&times</button>
-          <button class="buttons">0</button>
-          <button class="buttons">.</button>
+          <button class="buttons" id="allclear-btn">AC</button>
+          <button class="buttons" id="clear-btn">C</button>
+          <button class="buttons operator" value="/100">%</button>
+          <button class="buttons operator">&divide</button>
+          <button class="buttons digit">7</button>
+          <button class="buttons digit">8</button>
+          <button class="buttons digit">9</button>
+          <button class="buttons operator">+</button>
+          <button class="buttons digit">4</button>
+          <button class="buttons digit">5</button>
+          <button class="buttons digit">6</button>
+          <button class="buttons operator">-</button>
+          <button class="buttons digit">1</button>
+          <button class="buttons digtit">2</button>
+          <button class="buttons digit">3</button>
+          <button class="buttons operator">&times</button>
+          <button class="buttons digit">0</button>
+          <button class="buttons" id="decimal-btn">.</button>
           <button class="buttons" id="equal-btn">=</button>
         </div>
       </div>

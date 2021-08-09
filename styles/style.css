@@ -47,6 +47,8 @@ header {
   word-wrap: break-word;
   margin: 8px 10px 0 10px;
   text-align: right;
+  height: 30px;
+  overflow: hidden;
 }
 #result {
   position: absolute;
