@@ -12,17 +12,27 @@ let currentOperator;
 let result = 0;
 
 function getInput(e) {
-  allNumbers.push(e.target.textContent);
+  allNumbers.push(e.target.value);
   findOperatorPosition(allNumbers);
 }
+
 function findOperatorPosition(arr) {
   operatorPosition = arr.findIndex((x) => operatorsValue.includes(x));
+  if (operatorPosition >= 0) {
+    for (let i = arr.length - 1; i >= 0; --i) {
+      if (operatorsValue.includes(arr[i])) {
+        operatorPosition = i;
+        break;
+      }
+    }
+  }
   if (operatorPosition >= 0 && operatorPosition != arr.length - 1) {
     num2 = parseInt(allNumbers.slice(operatorPosition + 1).join(""));
     currentOperator = allNumbers[operatorPosition];
   }
   num1 = result || parseInt(allNumbers.slice(0, operatorPosition).join(""));
 }
+// does the actual mathematical operation
 function doCalculation(operator, input1, input2) {
   switch (operator) {
     case "+":
