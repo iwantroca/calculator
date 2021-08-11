@@ -3,6 +3,7 @@ const input = document.getElementById("input");
 const operatorsNode = document.querySelectorAll(".operator");
 const equalButton = document.querySelector("#equal-btn");
 const resultDisplay = document.querySelector("#result");
+const decimalButton = document.querySelector("#decimal-btn");
 let allNumbers = [];
 let operatorsValue = [...operatorsNode].map((x) => x.value);
 let operatorPosition;
@@ -14,8 +15,11 @@ let result = 0;
 function getInput(e) {
   allNumbers.push(e.target.value);
   findOperatorPosition(allNumbers);
+  splitOperators(allNumbers);
 }
-
+function addDecimal(e) {
+  allNumbers.push(".");
+}
 function findOperatorPosition(arr) {
   operatorPosition = arr.findIndex((x) => operatorsValue.includes(x));
   if (operatorPosition >= 0) {
@@ -26,13 +30,29 @@ function findOperatorPosition(arr) {
       }
     }
   }
-  if (operatorPosition >= 0 && operatorPosition != arr.length - 1) {
-    num2 = parseInt(allNumbers.slice(operatorPosition + 1).join(""));
+  return operatorPosition;
+}
+function clearAllInput() {
+  allNumbers = [];
+  currentOperator = "";
+  num2 = "";
+}
+function splitOperators(arr) {
+  // if (isNaN(num2)) num2 = "";
+  if (operatorPosition >= 0) {
+    // if (operatorPosition >= 0 && operatorPosition != arr.length - 1) {
+    num2 = parseFloat(allNumbers.slice(operatorPosition + 1).join(""));
+
     currentOperator = allNumbers[operatorPosition];
   }
-  num1 = result || parseInt(allNumbers.slice(0, operatorPosition).join(""));
+  //parseInt(allNumbers.slice(0, operatorPosition).join(""))
+  num1 = result || parseFloat(allNumbers.slice(0).join(""));
+  if (isNaN(num2)) {
+    console.log(`${num1} ${currentOperator ?? ""}`);
+  } else {
+    console.log(`${num1} ${currentOperator ?? ""} ${num2 ?? ""}`);
+  }
 }
-// does the actual mathematical operation
 function doCalculation(operator, input1, input2) {
   switch (operator) {
     case "+":
@@ -51,12 +71,18 @@ function doCalculation(operator, input1, input2) {
       result = input1 / 100;
       break;
     default:
-      console.log("error");
+      // console.log("error");
+      result = num1;
   }
 }
 
+decimalButton.addEventListener("click", addDecimal);
 buttons.forEach((button) => button.addEventListener("click", getInput));
 equalButton.addEventListener("click", () => {
-  doCalculation(currentOperator, num1, num2);
-  allNumbers = [];
+  if (!isNaN(num2)) {
+    doCalculation(currentOperator, num1, num2);
+  } else {
+    result = num1;
+  }
+  clearAllInput();
 });
