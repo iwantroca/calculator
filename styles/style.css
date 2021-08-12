@@ -42,7 +42,7 @@ header {
   position: absolute;
   top: 22px;
 }
-#input {
+#display-last {
   font-size: 22px;
   word-wrap: break-word;
   margin: 8px 10px 0 10px;
@@ -50,7 +50,7 @@ header {
   height: 30px;
   overflow: hidden;
 }
-#result {
+#display-current {
   position: absolute;
   bottom: 10px;
   right: 0px;

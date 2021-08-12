@@ -17,27 +17,31 @@
     <main>
       <div class="container">
         <div class="display">
-          <p id="input">0</p>
-          <p id="result">&nbsp</p>
+          <p id="display-last">0</p>
+          <p id="display-current"></p>
         </div>
         <div class="buttons-holder">
           <button class="buttons" id="allclear-btn">AC</button>
           <button class="buttons" id="clear-btn">C</button>
-          <button class="buttons operator" value="%">%</button>
-          <button class="buttons operator" value="/">&divide</button>
-          <button class="buttons digit" value="7">7</button>
-          <button class="buttons digit" value="8">8</button>
-          <button class="buttons digit" value="9">9</button>
-          <button class="buttons operator" value="+">+</button>
-          <button class="buttons digit" value="4">4</button>
-          <button class="buttons digit" value="5">5</button>
-          <button class="buttons digit" value="6">6</button>
-          <button class="buttons operator" value="-">-</button>
-          <button class="buttons digit" value="1">1</button>
-          <button class="buttons digtit" value="2">2</button>
-          <button class="buttons digit" value="3">3</button>
-          <button class="buttons operator" value="*">&times</button>
-          <button class="buttons digit" value="0">0</button>
+          <button class="buttons" data-operator>%</button>
+          <button class="buttons" data-operator>&divide</button>
+
+          <button class="buttons" data-number>7</button>
+          <button class="buttons" data-number>8</button>
+          <button class="buttons" data-number>9</button>
+          <button class="buttons" data-operator>+</button>
+
+          <button class="buttons" data-number>4</button>
+          <button class="buttons" data-number>5</button>
+          <button class="buttons" data-number>6</button>
+          <button class="buttons" data-operator>-</button>
+
+          <button class="buttons" data-number>1</button>
+          <button class="buttons" data-number>2</button>
+          <button class="buttons" data-number>3</button>
+          <button class="buttons" data-operator>&times</button>
+
+          <button class="buttons" data-number>0</button>
           <button class="buttons" id="decimal-btn">.</button>
           <button class="buttons" id="equal-btn">=</button>
         </div>
