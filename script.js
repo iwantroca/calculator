@@ -25,10 +25,8 @@ function getOperator(operator) {
   } else if (firstOperand != currentDisplay.textContent) {
     firstOperand = currentDisplay.textContent;
   }
-  //
   currentOperator = operator;
   updateLastDisplay();
-  //
   currentDisplay.textContent = "";
 }
 function doCalculation(operator, input1, input2) {
@@ -67,12 +65,36 @@ function clearWithButton() {
     .slice(0, -1)
     .join("");
 }
-//
 function completeDataClear() {
   currentDisplay.textContent = "";
   lastDisplay.textContent = 0;
   firstOperand = 0;
   result = 0;
+}
+//Add Keyboard Support
+function addKeyboardSupport(e) {
+  if (e.key == 0 || e.key <= 9) getNumbers(e.key);
+  if (!currentDisplay.textContent.split("").includes(".") && e.key == ".")
+    addDecimal();
+  if (e.key == "Delete") clearWithButton();
+  if (e.key == "+") getOperator("+");
+  if (e.key == "-") getOperator("-");
+  if (e.key == "/") getOperator("÷");
+  if (e.key == "*") getOperator("×");
+  if (e.key == "Enter") {
+    if (currentOperator) {
+      secondOperand = currentDisplay.textContent;
+      doCalculation(currentOperator, firstOperand, secondOperand);
+      currentDisplay.textContent = result;
+      updateLastDisplay();
+      firstOperand = result;
+      secondOperand = "";
+      currentOperator = "";
+    }
+  }
+}
+function callKeyboardOperator(operator) {
+  getOperator(operator);
 }
 
 numberButtons.forEach((button) =>
@@ -105,3 +127,4 @@ decimalButton.addEventListener("click", () => {
 });
 clearButton.addEventListener("click", clearWithButton);
 allClearButton.addEventListener("click", completeDataClear);
+window.addEventListener("keyup", addKeyboardSupport);
