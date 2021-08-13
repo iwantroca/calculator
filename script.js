@@ -42,6 +42,15 @@ function doCalculation(operator, input1, input2) {
     case "×":
       result = Number(input1) * Number(input2);
       break;
+    case "÷":
+      if (input2 == 0) result = 0;
+      else {
+        result = Number(input1) / Number(input2);
+      }
+      break;
+    case "%":
+      result = Number(input1) / 100;
+      break;
   }
 }
 function updateLastDisplay() {
