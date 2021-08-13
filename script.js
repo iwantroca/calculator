@@ -10,20 +10,25 @@ const operators = [...operatorButtons].map((x) => x.textContent);
 const lastDisplay = document.querySelector("#display-last");
 const currentDisplay = document.querySelector("#display-current");
 const equalButton = document.querySelector("#equal-btn");
-
-// add eventlisterner to operators buttons so that if currentDisplay is true and
-// firstOperand is true
-// then take the new Operator and textcontent as second operand
+const allClearButton = document.querySelector("#allclear-btn");
+const clearButton = document.querySelector("#clear-btn");
+const decimalButton = document.querySelector("#decimal-btn");
 
 function getNumbers(num) {
   currentDisplay.textContent += num;
 }
 function getOperator(operator) {
-  // firstOperand = currentDisplay.textContent || result;
-  firstOperand = result || currentDisplay.textContent;
-
+  if (!firstOperand) firstOperand = currentDisplay.textContent ?? 0;
+  // firstOperand = result || currentDisplay.textContent;
+  else if (firstOperand && !currentDisplay.textContent && currentOperator) {
+    firstOperand = firstOperand || currentDisplay.textContent || 0;
+  } else if (firstOperand != currentDisplay.textContent) {
+    firstOperand = currentDisplay.textContent;
+  }
+  //
   currentOperator = operator;
   updateLastDisplay();
+  //
   currentDisplay.textContent = "";
 }
 function doCalculation(operator, input1, input2) {
@@ -40,7 +45,25 @@ function doCalculation(operator, input1, input2) {
   }
 }
 function updateLastDisplay() {
-  lastDisplay.textContent = `${firstOperand} ${currentOperator} ${secondOperand}`;
+  lastDisplay.textContent = `${
+    firstOperand || 0
+  } ${currentOperator} ${secondOperand}`;
+}
+function addDecimal() {
+  currentDisplay.textContent += ".";
+}
+function clearWithButton() {
+  currentDisplay.textContent = currentDisplay.textContent
+    .split("")
+    .slice(0, -1)
+    .join("");
+}
+//
+function completeDataClear() {
+  currentDisplay.textContent = "";
+  lastDisplay.textContent = 0;
+  firstOperand = 0;
+  result = 0;
 }
 
 numberButtons.forEach((button) =>
@@ -64,3 +87,12 @@ equalButton.addEventListener("click", () => {
     currentOperator = "";
   }
 });
+decimalButton.addEventListener("click", () => {
+  if (currentDisplay.textContent.split("").includes(".")) {
+    return;
+  } else {
+    addDecimal();
+  }
+});
+clearButton.addEventListener("click", clearWithButton);
+allClearButton.addEventListener("click", completeDataClear);
