@@ -19,7 +19,6 @@ function getNumbers(num) {
 }
 function getOperator(operator) {
   if (!firstOperand) firstOperand = currentDisplay.textContent ?? 0;
-  // firstOperand = result || currentDisplay.textContent;
   else if (firstOperand && !currentDisplay.textContent && currentOperator) {
     firstOperand = firstOperand || currentDisplay.textContent || 0;
   } else if (firstOperand != currentDisplay.textContent) {
@@ -49,6 +48,19 @@ function doCalculation(operator, input1, input2) {
     case "%":
       result = Number(input1) / 100;
       break;
+  }
+  result = Math.round(result * 1000) / 1000;
+  return result;
+}
+function finaliseAnswer() {
+  if (currentOperator) {
+    secondOperand = currentDisplay.textContent;
+    doCalculation(currentOperator, firstOperand, secondOperand);
+    currentDisplay.textContent = result;
+    updateLastDisplay();
+    firstOperand = result;
+    secondOperand = "";
+    currentOperator = "";
   }
 }
 function updateLastDisplay() {
@@ -82,19 +94,8 @@ function addKeyboardSupport(e) {
   if (e.key == "/") getOperator("÷");
   if (e.key == "*") getOperator("×");
   if (e.key == "Enter") {
-    if (currentOperator) {
-      secondOperand = currentDisplay.textContent;
-      doCalculation(currentOperator, firstOperand, secondOperand);
-      currentDisplay.textContent = result;
-      updateLastDisplay();
-      firstOperand = result;
-      secondOperand = "";
-      currentOperator = "";
-    }
+    finaliseAnswer();
   }
-}
-function callKeyboardOperator(operator) {
-  getOperator(operator);
 }
 
 numberButtons.forEach((button) =>
@@ -108,15 +109,7 @@ operatorButtons.forEach((button) =>
   })
 );
 equalButton.addEventListener("click", () => {
-  if (currentOperator) {
-    secondOperand = currentDisplay.textContent;
-    doCalculation(currentOperator, firstOperand, secondOperand);
-    currentDisplay.textContent = result;
-    updateLastDisplay();
-    firstOperand = result;
-    secondOperand = "";
-    currentOperator = "";
-  }
+  finaliseAnswer();
 });
 decimalButton.addEventListener("click", () => {
   if (currentDisplay.textContent.split("").includes(".")) {
